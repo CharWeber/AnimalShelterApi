@@ -34,7 +34,7 @@ namespace Shelter.Controllers
       return await query.ToListAsync();      
     }
 
-    //GET api/Aniamls/3
+    //GET api/Animals/3
     [HttpGet("{id}")]
     public async Task<ActionResult<Animal>> GetAnimal(int id)
     {
@@ -46,8 +46,8 @@ namespace Shelter.Controllers
       }
       return animal;
     }
-    //PUT api/Aniamls/3
-    [HttpPut]
+    //PUT api/Animals/3
+    [HttpPut("{id}")]
     public async Task<IActionResult> Put(int id, Animal animal)
     {
       if (id != animal.AnimalId)
