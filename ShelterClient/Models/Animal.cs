@@ -33,10 +33,19 @@ namespace ShelterClient.Models
 
       return animalList;
     }
-    public static Animal PostAnimal(int id)
+    public static Animal PostAnimal(Animal animal)
     {
       string jsonAnimal = JsonConvert.SerializeObject(animal);
       var apiCallTask = ApiHelper.Post(jsonAnimal);
+    }
+    public static Animal PutAnimal(Animal animal)
+    {
+      string jsonAnimal = JsonConvert.SerializeObject(animal);
+      var apiCallTask = ApiHelper.Put(animal.AnimalID, jsonAnimal);
+    }
+    public static void Delete(int id)
+    {
+      var apiCallTask = ApiHelper.Delete(id);
     }
   }
 }

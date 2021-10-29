@@ -12,5 +12,39 @@ namespace CretaceousClient.Models
       var response = await client.ExecuteTaskAsync(request);
       return response.Content;
     }
+    public static async Task<string> Get(int id)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"animals/{id}", Method.GET);
+      var response = await client.ExecuteTaskAsync(request);
+      return response.Content;
+    }
+
+    public static async Task Post(string newAnimal)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"animals", Method.POST);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddBody(newAnimal);
+      var response = await client.ExecuteAsync(request);
+    }
+
+    public static async Task Put(string newAnimal, int id)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"animals/{id}", Method.PUT);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddBody(newAnimal);
+      var response = await client.ExecuteAsync(request);
+    }
+
+    public static async task Delete (int id)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"animals/{id}", Method.DELETE);
+      request.AddHeader("Content-Type", "application/json");
+      var response = await client.ExecuteAsync(request);
+    }
+
   }
 }
