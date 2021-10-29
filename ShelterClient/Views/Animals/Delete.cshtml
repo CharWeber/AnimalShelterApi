@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+  ViewData["Title"] = "Adopt";
+}
+
+@model ShelterClient.Models.Animal
+
+<h2>Would you like to delete @Model.Name</h2>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="confirm"/>
+}

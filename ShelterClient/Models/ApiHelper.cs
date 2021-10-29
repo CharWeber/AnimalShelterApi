@@ -9,14 +9,14 @@ namespace ShelterClient.Models
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"animals", Method.GET);
-      var response = await client.ExecuteTaskAsync(request);
+      var response = await client.ExecuteAsync(request);
       return response.Content;
     }
     public static async Task<string> Get(int id)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"animals/{id}", Method.GET);
-      var response = await client.ExecuteTaskAsync(request);
+      var response = await client.ExecuteAsync(request);
       return response.Content;
     }
 
@@ -25,20 +25,20 @@ namespace ShelterClient.Models
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"animals", Method.POST);
       request.AddHeader("Content-Type", "application/json");
-      request.AddBody(newAnimal);
+      request.AddJsonBody(newAnimal);
       var response = await client.ExecuteAsync(request);
     }
 
-    public static async Task Put(string newAnimal, int id)
+    public static async Task Put(int id, string newAnimal)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"animals/{id}", Method.PUT);
       request.AddHeader("Content-Type", "application/json");
-      request.AddBody(newAnimal);
+      request.AddJsonBody(newAnimal);
       var response = await client.ExecuteAsync(request);
     }
 
-    public static async task Delete(int id)
+    public static async Task Delete(int id)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"animals/{id}", Method.DELETE);

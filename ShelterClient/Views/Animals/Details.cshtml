@@ -1,0 +1,15 @@
+@{
+  ViewData["Title"] = "Details";
+  Layout = "_Layout";
+}
+@using ShelterClient.Models
+
+<h2>Animal Info</h2>
+<ul>
+    <li>Name: @Model.Name</li>
+    <li>Age: @Model.Age</li>
+    <li>@Model.Species  --  @Model.Gender</li>
+</ul>
+<br>
+
+<p>@Html.ActionLink("Edit this Pet", "Edit", new {id = Model.AnimalId})</p>

@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace ShelterClient.Models
 {
@@ -33,15 +35,15 @@ namespace ShelterClient.Models
 
       return animalList;
     }
-    public static Animal PostAnimal(Animal animal)
+    public static void PostAnimal(Animal animal)
     {
       string jsonAnimal = JsonConvert.SerializeObject(animal);
       var apiCallTask = ApiHelper.Post(jsonAnimal);
     }
-    public static Animal PutAnimal(Animal animal)
+    public static void PutAnimal(Animal animal)
     {
       string jsonAnimal = JsonConvert.SerializeObject(animal);
-      var apiCallTask = ApiHelper.Put(animal.AnimalID, jsonAnimal);
+      var apiCallTask = ApiHelper.Put(animal.AnimalId, jsonAnimal);
     }
     public static void Delete(int id)
     {

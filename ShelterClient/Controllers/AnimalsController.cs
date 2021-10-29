@@ -14,10 +14,22 @@ namespace ShelterClient.Controllers
 {
   public class AnimalsController : Controller
   {
-    public IactionResult Index()
+    public IActionResult Index()
     {
-      var allAnimals = Animal.GetAll();
+      var allAnimals = Animal.GetAnimals();
       return View(allAnimals);
+    }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(Animal animal)
+    {
+      Animal.PostAnimal(animal);
+      return RedirectToAction("Index");
     }
 
     public IActionResult Details(int id)
@@ -28,13 +40,13 @@ namespace ShelterClient.Controllers
 
     public IActionResult Edit(int id)
     {
-      var animal = Animal.GetAnimal(id);
+      var animal = Animal.PutAnimal(id);
       return View(animal);
     }
 
     public IActionResult Delete(int id)
     {
-      Aniaml.Delete(id);
+      Animal.Delete(id);
       return RedirectToAction("Index");
     }
   }

@@ -1,0 +1,21 @@
+@{
+  ViewData["Title"] = "Animals!";
+  Layout = "_Layout";
+  }
+@using ShelterClient.Models
+
+<h3> See a list of Animals below: </h3>
+
+<ol>
+  @foreach (Animal animal in Model)
+  {
+    <ul>
+      
+      <li><h3>name: @Html.ActionLink($"{animal.Name}", "Details", new {id =animal.AnimalId});</h3> </li>
+      <li>Age: @animal.Age</li>
+      <li>@animal.Species  --  @animal.Gender</li>
+    </ul>
+  }
+
+<h3> Or add a review yourself! </h3>
+<h3 class="btn btn-dark">@Html.ActionLink("Add Animal", "Create")</h3>
