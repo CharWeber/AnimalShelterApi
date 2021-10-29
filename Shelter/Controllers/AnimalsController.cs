@@ -21,13 +21,7 @@ namespace Shelter.Controllers
       _db = db;
     }
 
-  // GET api/Animals
-    [HttpGet]
-    public async Task<ActionResult<IEnumerable<Animal>>> GetAll()
-    {
-      return await _db.Animals.ToListAsync();
-    }
-    //GET api/Animals/{species}
+    //GET api/Animals
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Animal>>> Get(string species)
     {
@@ -40,7 +34,7 @@ namespace Shelter.Controllers
       return await query.ToListAsync();      
     }
 
-    //GET api/Aniamls/{id}
+    //GET api/Aniamls/3
     [HttpGet("{id}")]
     public async Task<ActionResult<Animal>> GetAnimal(int id)
     {
@@ -52,7 +46,7 @@ namespace Shelter.Controllers
       }
       return animal;
     }
-    //PUT api/Aniamls/{id}
+    //PUT api/Aniamls/3
     [HttpPut]
     public async Task<IActionResult> Put(int id, Animal animal)
     {
@@ -80,7 +74,7 @@ namespace Shelter.Controllers
       }
       return NoContent();
     }
-    // POST:api/Animalsw
+    // POST:api/Animals
     [HttpPost]
     public async Task<ActionResult<Animal>> Post(Animal animal)
     {
