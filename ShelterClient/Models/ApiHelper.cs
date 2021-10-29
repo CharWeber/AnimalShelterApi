@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using RestSharp;
 
-namespace CretaceousClient.Models
+namespace ShelterClient.Models
 {
   class ApiHelper
   {
@@ -38,7 +38,7 @@ namespace CretaceousClient.Models
       var response = await client.ExecuteAsync(request);
     }
 
-    public static async task Delete (int id)
+    public static async task Delete(int id)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"animals/{id}", Method.DELETE);
