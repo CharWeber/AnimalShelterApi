@@ -40,8 +40,15 @@ namespace ShelterClient.Controllers
 
     public IActionResult Edit(int id)
     {
-      var animal = Animal.PutAnimal(id);
+      var animal = Animal.GetAnimal(id);
       return View(animal);
+    }
+
+    [HttpPost]
+    public IActionResult Edit(Animal animal)
+    {
+      Animal.PutAnimal(animal);
+      return RedirectToAction("Index");
     }
 
     public IActionResult Delete(int id)
